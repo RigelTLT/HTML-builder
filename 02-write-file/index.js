@@ -6,8 +6,7 @@ stdout.write('Введите текст для записи\n');
 stdin.on('data', function(data) {
     fs.appendFile(path.join(__dirname, 'text.txt'),
     data,
-    err => {
-        if (err) throw err;
+    () => {
         console.log('Добавьте еще текст');
     })
 })
