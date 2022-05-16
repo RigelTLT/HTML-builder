@@ -7,12 +7,17 @@ stdin.on('data', function(data) {
     fs.appendFile(path.join(__dirname, 'text.txt'),
     data,
     () => {
-        console.log('Добавьте еще текст');
+        let test = data.toString();
+        if(test.trim() === 'exit'){
+            process.exit();
+        }else{
+            console.log('Добавьте еще текст');
+        }
     })
 })
-
 process.on('SIGINT', () =>{
-    stdout.write('Hasta la vista, baby');
     process.exit();
 })
-
+process.on('exit', () =>{
+    stdout.write('Hasta la vista, baby');
+})
